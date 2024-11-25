@@ -1,0 +1,36 @@
+x-postgres-env: &postgres-env
+  DATABASE_URL: "ecto://admin:pass@pg/apps-dev"
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: pass
+  POSTGRES_DB: apps-dev
+
+services:
+  pg:
+    image: postgis/postgis:13-3.3-alpine
+    restart: always
+    environment:
+      <<: *postgres-env
+    ports:
+      - "5555:5432"
+    volumes:
+      - apps-data:/var/lib/postgresql/data
+    networks:
+      - apps-dev
+
+  psql:
+    profiles: ['pg']
+    build: ./docker/psql/
+    volumes:
+      - ./.data/:/data/
+    depends_on:
+      - pg
+    networks:
+      - apps-dev
+    command: psql -h pg -U admin -d apps-dev
+
+volumes:
+  apps-data:
+
+networks:
+  apps-dev:
+    external: true
