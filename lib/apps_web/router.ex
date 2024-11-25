@@ -28,6 +28,15 @@ defmodule AppsWeb.Router do
     pipe_through :api
 
     get "/healthy", HealthyController, :index
+
+    scope "/apps/:app_id" do
+      scope "/devices/:device_id" do
+        post "/", DevicesController, :upsert
+        post "/settings", SettingsController, :upsert
+      end
+
+      post "/revenue_cat/webhook", RevenueCatController, :create
+    end
   end
 
   scope "/", AppsWeb do
@@ -40,8 +49,8 @@ defmodule AppsWeb.Router do
     pipe_through [:browser, :http_basic_protected]
 
     live_admin "/admin" do
-      admin_resource "/users", Apps.Admin.Users
-      admin_resource "/projects", Apps.Admin.Projects
+      admin_resource("/users", Apps.Admin.Users)
+      admin_resource("/projects", Apps.Admin.Projects)
     end
   end
 
