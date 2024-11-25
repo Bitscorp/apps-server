@@ -23,7 +23,7 @@ defmodule Apps.UsersTest do
       user = user_fixture(%{device_id: "device_id"})
       assert user.device_id == "device_id"
 
-      {:ok, user} = Users.upsert_user(%{device_id: "device_id", name: "name"})
+      {:ok, user} = Users.upsert_user(%{device_id: "device_id", name: "name", project_id: user.project_id})
       assert user.device_id == "device_id"
 
       assert User |> Repo.aggregate(:count) == 1

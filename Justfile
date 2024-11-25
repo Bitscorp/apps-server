@@ -3,3 +3,6 @@ migrate:
 
 test:
 	mix test
+
+psql:
+	docker compose run psql
