@@ -21,6 +21,8 @@ RUN mix deps.get
 # Now copy the rest of the application code
 COPY . /app
 
+RUN rm -rf _build
+
 RUN mix release
 
 FROM alpine:latest
