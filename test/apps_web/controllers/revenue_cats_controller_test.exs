@@ -23,7 +23,7 @@ defmodule AppsWeb.RevenueCatControllerTest do
         post(conn, ~p"/projects/#{project.id}/revenue_cat/webhook", %{
           event: %{
             product_id: "test1",
-            app_user_id: user.id
+            app_user_id: user.id |> to_string()
           }
         })
 
@@ -34,7 +34,7 @@ defmodule AppsWeb.RevenueCatControllerTest do
       event = RevenueCatEvent |> Repo.one()
       assert event.user_id == user.id
       assert event.event.product_id == "test1"
-      assert event.event.app_user_id == user.id
+      assert event.event.app_user_id == user.id |> to_string()
     end
   end
 end

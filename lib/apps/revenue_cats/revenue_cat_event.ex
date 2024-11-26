@@ -44,7 +44,7 @@ defmodule Apps.RevenueCats.RevenueCatEvent do
   @doc false
   def changeset(revenue_cat_event, attrs) do
     revenue_cat_event
-    |> cast(attrs, [:user_id, :event])
+    |> cast(attrs, [:user_id])
     |> cast_embed(:event, with: &event_changeset/2)
     |> validate_required([:user_id, :event])
     |> foreign_key_constraint(:user_id)
@@ -55,6 +55,7 @@ defmodule Apps.RevenueCats.RevenueCatEvent do
     |> cast(attrs, [
       :id,
       :app_id,
+      :app_user_id,
       :event_timestamp_ms,
       :product_id,
       :purchased_at_ms,
