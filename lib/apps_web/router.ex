@@ -35,7 +35,7 @@ defmodule AppsWeb.Router do
         post "/settings", SettingsController, :upsert
       end
 
-      post "/revenue_cat/webhook", RevenueCatController, :create
+      post "/revenue_cat/webhook", RevenueCatController, :webhook
     end
   end
 
