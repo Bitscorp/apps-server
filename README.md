@@ -16,3 +16,23 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+
+## Development
+
+* Run `docker compose up` to start the database and LiveAdmin
+* Run `mix setup` to install and setup dependencies
+* Run `just server` to start the Phoenix server
+* Admin page accessible at [localhost:4000/admin](http://localhost:4000/admin)
+
+## Deployment
+
+* Run `docker build -t apps:latest .` to build the Docker image
+* Run `docker run -p 4000:4000 apps:latest` to start the container
+
+### Runtime Environment Variables
+
+* `DATABASE_URL` - The database URL
+* `SECRET_KEY_BASE` - The secret key base
+* `PHX_HOST` - The host to use for the Phoenix server
+* `PORT` - The port to use for the Phoenix server
