@@ -1,9 +1,26 @@
-# add release version of elixir phoenix app inside of docker container
-FROM elixir:1.16.3-alpine AS builder
+FROM elixir:latest AS builder
 
-COPY . .
+# Install git
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
 
+WORKDIR /app
+
+# Copy mix files first to leverage Docker cache
+COPY mix.exs mix.lock ./
+COPY config config
+
+# Install hex and rebar
+RUN mix local.hex --force && \
+    mix local.rebar --force
+
+# Get dependencies
 RUN mix deps.get
+
+# Now copy the rest of the application code
+COPY . /app
+
 RUN mix release
 
 FROM alpine:latest
