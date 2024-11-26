@@ -65,6 +65,10 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  config :apps, :basic_auth,
+    username: System.get_env("HTTP_BASIC_USERNAME"),
+    password: System.get_env("HTTP_BASIC_PASSWORD")
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key

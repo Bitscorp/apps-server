@@ -18,7 +18,7 @@ defmodule AppsWeb.Router do
 
   pipeline :http_basic_protected do
     defp http_basic_auth(conn, _opts) do
-      Plug.BasicAuth.basic_auth(conn, Application.get_env(:eyelevel_ex, :basic_auth))
+      Plug.BasicAuth.basic_auth(conn, Application.get_env(:apps, :basic_auth))
     end
 
     plug(:http_basic_auth)
@@ -29,7 +29,7 @@ defmodule AppsWeb.Router do
 
     get "/healthy", HealthyController, :index
 
-    scope "/apps/:app_id" do
+    scope "/projects/:project_id" do
       scope "/devices/:device_id" do
         post "/", DevicesController, :upsert
         post "/settings", SettingsController, :upsert
