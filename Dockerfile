@@ -52,6 +52,7 @@ RUN apt-get update \
     wkhtmltopdf \
     libheif1 \
     pdftk \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
