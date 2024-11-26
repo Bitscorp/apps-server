@@ -1,4 +1,6 @@
-FROM elixir:latest AS builder
+FROM elixir:1.15 AS builder
+
+ENV MIX_ENV=prod
 
 # Install git
 RUN apt-get update && \
@@ -27,8 +29,12 @@ RUN mix release
 
 FROM alpine:latest
 
+EXPOSE 4000
+
 RUN apk add --no-cache openssl
 
-COPY --from=builder /app/_build/prod/rel/apps/releases/0.1.0/apps .
+COPY --from=builder /app/_build/prod/rel/apps/ /app
 
-CMD ["./apps", "start"]
+WORKDIR /app
+
+CMD ["bin/apps", "start"]
