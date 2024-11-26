@@ -1,5 +1,5 @@
 # add release version of elixir phoenix app inside of docker container
-FROM elixir:1.16.3-alpine as builder
+FROM elixir:1.16.3-alpine AS builder
 
 COPY . .
 
