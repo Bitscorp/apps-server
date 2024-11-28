@@ -4,8 +4,6 @@ defmodule Apps.ProjectsTest do
   alias Apps.Projects
 
   describe "projects" do
-    alias Apps.Projects.Project
-
     import Apps.ProjectsFixtures
 
     test "get_project!/1 returns the project with given id" do

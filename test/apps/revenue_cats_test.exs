@@ -8,8 +8,6 @@ defmodule Apps.RevenueCatsTest do
     alias Apps.Users.User
     alias Apps.Repo
 
-    import Apps.RevenueCatsFixtures
-
     @invalid_attrs %{user_id: nil, event: nil}
 
     setup do
