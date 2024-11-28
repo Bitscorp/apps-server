@@ -1,4 +1,6 @@
 defmodule Apps.RevenueCats do
+  @moduledoc false
+
   import Ecto.Query, warn: false
   alias Apps.Repo
 

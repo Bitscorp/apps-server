@@ -1,4 +1,6 @@
 defmodule Apps.Projects.Specs.ProjectSpec do
+  @moduledoc false
+
   @type t() :: %Apps.Projects.Project{
           name: Types.field(String.t()),
           platform: Types.field(String.t()),

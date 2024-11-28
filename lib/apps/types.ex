@@ -1,4 +1,6 @@
 defmodule Apps.Types do
+  @moduledoc false
+
   @type id() :: binary() | integer()
   @type uuid() :: Ecto.UUID.t()
   @type field(field_type) :: field_type | nil

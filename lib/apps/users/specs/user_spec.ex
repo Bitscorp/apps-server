@@ -1,4 +1,6 @@
 defmodule Apps.Users.Specs.UserSpec do
+  @moduledoc false
+
   @type t() :: %Apps.Users.User{
           device_id: Types.field(String.t()),
           project_id: Types.field(integer()),

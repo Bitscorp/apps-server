@@ -1,4 +1,6 @@
 defmodule Apps.Users.UserSetting do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
