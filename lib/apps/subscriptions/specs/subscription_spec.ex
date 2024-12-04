@@ -12,6 +12,7 @@ defmodule Apps.Subscriptions.Specs.SubscriptionSpec do
 
           # attributes
           product_id: Types.field(String.t()),
-          expires_at: Types.field(DateTime.t())
+          expires_at: Types.field(DateTime.t()),
+          status: Types.field(String.t())
         }
 end
