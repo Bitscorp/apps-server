@@ -52,6 +52,7 @@ defmodule AppsWeb.Router do
       admin_resource("/users", Apps.Admin.Users)
       admin_resource("/projects", Apps.Admin.Projects)
       admin_resource("/revenue_cat_events", Apps.Admin.RevenueCatEvents)
+      admin_resource("/subscriptions", Apps.Admin.Subscriptions)
     end
   end
 
