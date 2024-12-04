@@ -5,10 +5,10 @@ defmodule Apps.RevenueCats.Specs.RevenueCatEventSpec do
 
   @type t() :: %Apps.RevenueCats.RevenueCatEvent{
           user_id: Types.field(integer()),
-          event: Specs.EventSpec.t(),
+          event: Apps.RevenueCatsSpecs.EventSpec.t(),
 
           # associations
-          user: Specs.UserSpec.t(),
+          user: Apps.Users.Specs.UserSpec.t(),
 
           # timestamps
           inserted_at: Types.field(DateTime.t()),

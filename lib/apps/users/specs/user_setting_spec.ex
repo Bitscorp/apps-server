@@ -8,7 +8,7 @@ defmodule Apps.Users.Specs.UserSettingSpec do
           user_id: Types.field(integer()),
 
           # associations
-          user: Specs.UserSpec.t(),
+          user: Apps.Users.Specs.UserSpec.t(),
 
           # timestamps
           inserted_at: Types.field(DateTime.t()),
