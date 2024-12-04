@@ -1,6 +1,8 @@
 defmodule Apps.Users.Specs.UserSettingSpec do
   @moduledoc false
 
+  alias Apps.Types
+
   @type t() :: %Apps.Users.UserSetting{
           settings: Types.field(map()),
           user_id: Types.field(integer()),

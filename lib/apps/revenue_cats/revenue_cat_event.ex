@@ -7,7 +7,7 @@ defmodule Apps.RevenueCats.RevenueCatEvent do
 
   alias Apps.RevenueCats.RevenueCatEvent
 
-  @type t() :: Specs.RevenueCatEventSpec.t()
+  @type t() :: Apps.RevenueCats.Specs.RevenueCatEventSpec.t()
 
   schema "revenue_cat_events" do
     belongs_to :user, Apps.Users.User

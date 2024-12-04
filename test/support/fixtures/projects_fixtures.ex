@@ -12,7 +12,8 @@ defmodule Apps.ProjectsFixtures do
       attrs
       |> Enum.into(%{
         name: "some name",
-        platform: "some platform"
+        platform: "some platform",
+        api_key: "key1"
       })
       |> Apps.Projects.create_project()
 

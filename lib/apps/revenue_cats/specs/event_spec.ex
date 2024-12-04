@@ -1,6 +1,8 @@
 defmodule Apps.RevenueCats.Specs.EventSpec do
   @moduledoc false
 
+  alias Apps.Types
+
   @type t() :: %Apps.RevenueCats.RevenueCatEvent.Event{
           id: Types.field(String.t()),
           app_id: Types.field(String.t()),

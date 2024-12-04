@@ -8,7 +8,13 @@ defmodule Apps.ProjectsTest do
 
     test "get_project!/1 returns the project with given id" do
       project = project_fixture()
-      assert Projects.get_project!(project.id) == project
+
+      created_project = Projects.get_project!(project.id)
+
+      assert created_project.id == project.id
+      assert created_project.name == project.name
+      assert created_project.platform == project.platform
+      assert created_project.api_key != nil
     end
   end
 end

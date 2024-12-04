@@ -16,6 +16,10 @@ defmodule AppsWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :api_auth do
+    plug AppsWeb.Plugs.ApiKeyAuth
+  end
+
   pipeline :http_basic_protected do
     defp http_basic_auth(conn, _opts) do
       Plug.BasicAuth.basic_auth(conn, Application.get_env(:apps, :basic_auth))
@@ -30,11 +34,15 @@ defmodule AppsWeb.Router do
     get "/healthy", HealthyController, :index
 
     scope "/projects/:project_id" do
+      pipe_through :api_auth
+
       scope "/devices/:device_id" do
         post "/", DevicesController, :upsert
         post "/settings", SettingsController, :upsert
       end
+    end
 
+    scope "/projects/:project_id" do
       post "/revenue_cat/webhook", RevenueCatController, :webhook
     end
   end

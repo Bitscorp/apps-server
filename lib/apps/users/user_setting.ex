@@ -4,7 +4,7 @@ defmodule Apps.Users.UserSetting do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @type t() :: Specs.UserSettingSpec.t()
+  @type t() :: Apps.Users.Specs.UserSettingSpec.t()
 
   schema "user_settings" do
     field :settings, :map

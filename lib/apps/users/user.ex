@@ -4,7 +4,7 @@ defmodule Apps.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @type t() :: Specs.UserSpec.t()
+  @type t() :: Apps.Users.Specs.UserSpec.t()
 
   schema "users" do
     field :device_id, :string

@@ -12,11 +12,17 @@ defmodule AppsWeb.DevicesControllerTest do
 
   describe "creates a user" do
     test "POST /", %{conn: conn, project: project} do
-      conn = post(conn, ~p"/projects/#{project.id}/devices/1")
-      assert json_response(conn, 200) == %{"device_id" => "1"}
+      conn1 = conn
+      |> put_req_header("x-api-key", project.api_key)
+      |> post(~p"/projects/#{project.id}/devices/1")
 
-      conn = post(conn, ~p"/projects/#{project.id}/devices/1")
-      assert json_response(conn, 200) == %{"device_id" => "1"}
+      assert json_response(conn1, 200) == %{"device_id" => "1"}
+
+      conn2 = conn
+      |> put_req_header("x-api-key", project.api_key)
+      |> post(~p"/projects/#{project.id}/devices/1")
+
+      assert json_response(conn2, 200) == %{"device_id" => "1"}
 
       users = User |> Repo.all()
       assert Enum.count(users) == 1

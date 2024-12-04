@@ -29,7 +29,7 @@ defmodule Apps.Subscriptions.Subscription do
 
   alias Apps.Users.User
 
-  @type t() :: Specs.SubscriptionSpec.t()
+  @type t() :: Apps.Subscriptions.Specs.SubscriptionSpec.t()
 
   schema "subscriptions" do
     field :status, :string, default: "active"
