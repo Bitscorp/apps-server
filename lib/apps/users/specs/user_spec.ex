@@ -5,6 +5,9 @@ defmodule Apps.Users.Specs.UserSpec do
           device_id: Types.field(String.t()),
           project_id: Types.field(integer()),
 
+          # attributes
+          product_expires_at: Types.field(EctoUnixTimestamp.t()) | nil,
+
           # associations
           user_setting: Specs.UserSettingSpec.t(),
           project: Specs.ProjectSpec.t(),
