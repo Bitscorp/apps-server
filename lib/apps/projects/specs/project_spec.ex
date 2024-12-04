@@ -10,7 +10,7 @@ defmodule Apps.Projects.Specs.ProjectSpec do
           api_key: Types.field(String.t()),
 
           # associations
-          users: [Specs.UserSpec.t()],
+          users: [Apps.UsersSpecs.UserSpec.t()],
 
           # timestamps
           inserted_at: Types.field(DateTime.t()),
