@@ -21,11 +21,9 @@ defmodule AppsWeb.Router do
   end
 
   pipeline :http_basic_protected do
-    defp http_basic_auth(conn, _opts) do
-      Plug.BasicAuth.basic_auth(conn, Application.get_env(:apps, :basic_auth))
-    end
+    import Plug.BasicAuth
 
-    plug(:http_basic_auth)
+    plug :basic_auth, Application.compile_env(:apps, :basic_auth)
   end
 
   scope "/", AppsWeb do
