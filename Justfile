@@ -10,6 +10,12 @@ psql:
 server:
 	iex -S mix phx.server
 
+outdated:
+	mix hex.outdated
+
+audit:
+	mix deps.audit
+
 reset:
 	mix ecto.drop
 	mix ecto.create
